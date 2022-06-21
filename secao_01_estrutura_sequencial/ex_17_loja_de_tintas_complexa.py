@@ -30,3 +30,64 @@ Acrescente 10% de folga e sempre arredonde os valores para cima, isto é, consid
 
 def calcular_latas_e_preco_de_tinta():
     """Escreva aqui em baixo a sua solução"""
+    area_pintada = float(input('Digite o tamanho da área (m²) a ser pintada: ')) * 1.1
+
+    litros_galao = 3.6
+    galao_faz = 21.6
+    preco_galao = 25
+
+    litro_faz = 6
+
+    litros_lata = 18
+    lata_faz = 108
+    preco_lata = 80
+
+    quantidade_lata = area_pintada / lata_faz
+    comprar_litros = area_pintada // litro_faz
+    resto_litros = area_pintada % litro_faz
+
+    if resto_litros > 0:
+        comprar_litros += 1
+
+    if area_pintada % lata_faz > 0:
+        quantidade_lata = area_pintada // lata_faz + 1
+
+    sobrou = quantidade_lata * litros_lata - comprar_litros
+    preco_total = preco_lata * quantidade_lata
+    quantidade_galao = area_pintada / galao_faz
+
+    if area_pintada % galao_faz > 0:
+        quantidade_galao = area_pintada // galao_faz + 1
+
+    sobrou1 = quantidade_galao * litros_galao - comprar_litros
+    preco_total1 = preco_galao * quantidade_galao
+
+    quantidade_lata1 = area_pintada // lata_faz
+    sobra_area = area_pintada - (quantidade_lata1 * lata_faz)
+    quantidade_galao1 = sobra_area / galao_faz
+
+    if sobra_area % galao_faz > 0:
+        quantidade_galao1 = sobra_area // galao_faz + 1
+
+    if quantidade_galao1 > 3:
+        preco_total_lata = preco_lata * (quantidade_lata1 + 1)
+        sobrou2 = quantidade_lata1 * litros_lata - comprar_litros
+        preco_total2 = preco_total_lata
+
+    else:
+        preco_total_lata = preco_lata * quantidade_lata1
+        preco_total_galao = preco_galao * quantidade_galao1
+        preco_total2 = preco_total_lata + preco_total_galao
+        sobrou2 = (quantidade_galao1 * litros_galao) + (quantidade_lata1 * litros_lata) - comprar_litros
+
+    print(f'Você deve comprar {comprar_litros:.0f} litros de tinta.')
+    print(
+        f'Você pode comprar {quantidade_lata:.0f} lata(s) de {litros_lata} litros a um custo de R$ {preco_total:.0f}.'
+        f' Vão sobrar {sobrou:.1f} litro(s) de tinta.')
+    print(
+        f'Você pode comprar {quantidade_galao:.0f} lata(s) de {litros_galao} litros a um custo de R$ {preco_total1:.0f}'
+        f'. Vão sobrar {sobrou1:.1f} litro(s) de tinta.')
+    print(
+        f'Para menor custo, você pode comprar {quantidade_lata1:.0f} lata(s) de {litros_lata} litros e'
+        f' {quantidade_galao1:.0f} galão(ões) de {litros_galao} litros a um custo de R$ {preco_total2:.0f}.'
+        f' Vão sobrar {sobrou2:.1f} litro(s) de tinta.')
