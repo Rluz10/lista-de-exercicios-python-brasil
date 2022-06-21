@@ -52,3 +52,55 @@ Observando os termos no plural a colocação do "e", da vírgula entre outros. E
 
 def decompor_numero(numero: int):
     """Escreva aqui em baixo a sua solução"""
+    if numero >= 1000:
+        return 'O número precisa ser menor que 1000'
+    if numero < 0:
+        return 'O número precisa ser positivo'
+    numero = str(numero)
+    if len(numero) == 1:
+        un = int(numero)
+        if un <= 1:
+            return f'{un} = {un} unidade'
+        else:
+            return f'{un} = {un} unidades'
+    elif len(numero) == 2:
+        un = int(numero[1])
+        dez = int(numero[0])
+        numero = int(numero)
+        if un == 1:
+            a = f'{un} unidade'
+        else:
+            a = f'{un} unidades'
+        if dez == 1:
+            b = f'{dez} dezena'
+        else:
+            b = f'{dez} dezenas'
+        if un > 0:
+            return f'{numero} = {b} e {a}'
+        else:
+            return f'{numero} = {b}'
+    elif len(numero) == 3:
+        un = int(numero[2])
+        dez = int(numero[1])
+        cen = int(numero[0])
+        numero = int(numero)
+        if un == 1:
+            a = f'{un} unidade'
+        else:
+            a = f'{un} unidades'
+        if dez == 1:
+            b = f'{dez} dezena'
+        else:
+            b = f'{dez} dezenas'
+        if cen == 1:
+            c = f'{cen} centena'
+        else:
+            c = f'{cen} centenas'
+        if dez > 0 and un > 0:
+            return f'{numero} = {c}, {b} e {a}'
+        elif dez > 0 and un == 0:
+            return f'{numero} = {c} e {b}'
+        elif dez == 0 and un == 0:
+            return f'{numero} = {c}'
+        elif dez == 0 and un > 0:
+            return f'{numero} = {c} e {a}'

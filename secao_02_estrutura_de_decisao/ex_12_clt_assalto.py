@@ -53,3 +53,43 @@ até R$ 99999,99
 
 def calcular_salario_liquido(valor_hora: float, horas_trabalhadas: int):
     """Escreva aqui em baixo a sua solução"""
+    salario_bruto = valor_hora * horas_trabalhadas
+
+    if salario_bruto <= 900:
+        perc_renda = 0
+        imp_renda = salario_bruto * perc_renda
+    elif salario_bruto > 900 and salario_bruto <= 1500:
+        perc_renda = 0.05
+        imp_renda = salario_bruto * perc_renda
+    elif salario_bruto > 1500 and salario_bruto <= 2500:
+        perc_renda = 0.1
+        imp_renda = salario_bruto * perc_renda
+    else:
+        perc_renda = 0.2
+        imp_renda = salario_bruto * perc_renda
+
+    perc_sindicato = 0.03
+    sindicato = salario_bruto * perc_sindicato
+
+    perc_fgts = 0.11
+    fgts = salario_bruto * perc_fgts
+
+    perc_inss = 0.1
+    inss = salario_bruto * perc_inss
+
+    salario_liquido = salario_bruto - imp_renda - sindicato - inss
+
+    print_sb = f'(R$ {valor_hora:.2f} * {horas_trabalhadas})'
+    print_rcifrao = ': R$'
+    print_ir = f'({perc_renda:.0%})'
+    print_inss = f'({perc_inss:.0%})'
+    print_sind = f'({perc_sindicato:.0%})'
+    print_fgts = f'({perc_fgts:.0%})'
+
+    print(f'Salário Bruto: {print_sb:<20}{print_rcifrao}{salario_bruto:>9.2f}')
+    print(f'(-) IR {print_ir:<28}{print_rcifrao}{imp_renda:>9.2f}')
+    print(f'(-) INSS {print_inss:<26}{print_rcifrao}{inss:>9.2f}')
+    print(f'(-) Sindicato {print_sind:<21}{print_rcifrao}{sindicato:>9.2f}')
+    print(f'FGTS {print_fgts:<30}{print_rcifrao}{fgts:>9.2f}')
+    print(f'Total de descontos                 {print_rcifrao}{salario_bruto - salario_liquido:>9.2f}')
+    print(f'Salário Liquido                    {print_rcifrao}{salario_liquido:>9.2f}')

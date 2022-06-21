@@ -27,3 +27,69 @@ uma nota de 5 e quatro notas de 1.
 
 def calcular_troco(valor: int) -> str:
     """Escreva aqui em baixo a sua solução"""
+    cem = valor // 100
+    resto = valor % 100
+    if cem > 0:
+        if cem == 1:
+            a = f'{cem} nota de R$ 100'
+        else:
+            a = f'{cem} notas de R$ 100'
+    else:
+        a = 0
+
+    cinquenta = resto // 50
+    resto1 = resto % 50
+    if cinquenta > 0:
+        if cinquenta == 1:
+            b = f'{cinquenta} nota de R$ 50'
+        else:
+            b = f'{cinquenta} notas de R$ 50'
+    else:
+        b = 0
+
+    dez = resto1 // 10
+    resto2 = resto1 % 10
+    if dez > 0:
+        if dez == 1:
+            c = f'{dez} nota de R$ 10'
+        else:
+            c = f'{dez} notas de R$ 10'
+    else:
+        c = 0
+
+    cinco = resto2 // 5
+    resto3 = resto2 % 5
+    if cinco > 0:
+        if cinco == 1:
+            d = f'{cinco} nota de R$ 5'
+        else:
+            d = f'{cinco} notas de R$ 5'
+    else:
+        d = 0
+
+    um = resto3 // 1
+    resto4 = resto3 % 1
+    if um > 0:
+        if um == 1:
+            e = f'{um} nota de R$ 1'
+        else:
+            e = f'{um} notas de R$ 1'
+    else:
+        e = 0
+
+    lista = [a, b, c, d, e]
+    lista_temp = []
+    for i in lista:
+        if i != 0:
+            lista_temp.append(i)
+    contador = len(lista_temp)
+    if contador == 5:
+        return f'{lista_temp[0]}, {lista_temp[1]}, {lista_temp[2]}, {lista_temp[3]} e {lista_temp[4]}'
+    elif contador == 4:
+        return f'{lista_temp[0]}, {lista_temp[1]}, {lista_temp[2]} e {lista_temp[3]}'
+    elif contador == 3:
+        return f'{lista_temp[0]}, {lista_temp[1]} e {lista_temp[2]}'
+    elif contador == 2:
+        return f'{lista_temp[0]} e {lista_temp[1]}'
+    elif contador == 1:
+        return f'{lista_temp[0]}'
