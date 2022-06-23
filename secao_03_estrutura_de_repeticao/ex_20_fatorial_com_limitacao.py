@@ -33,3 +33,9 @@ Limite o cáculo para valores inteiros, positivos, maiores ou iguais a 16.
 
 def calcular_fatorial(n: int) -> int:
     """Escreva aqui em baixo a sua solução"""
+    soma = 1
+    if type(n) == float or n <= 0 or n > 16:
+        return f'Apenas valores positivos, inteiros e menores que 16 são válidos. Não é possível calcular para {n}'
+    for i in range(n, 0, -1):
+        soma = soma * i
+    print(soma)
